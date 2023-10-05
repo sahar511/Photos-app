@@ -11,6 +11,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { ToastModule } from 'primeng/toast';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +35,7 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { userEffects } from './User/store/user.effects';
 import { userReducer } from './User/store/user.reducer';
 import { AuthEffects } from './Auth/store/auth.effects';
+import { MessageService } from 'primeng/api';
 
 
 @NgModule({
@@ -62,13 +64,14 @@ import { AuthEffects } from './Auth/store/auth.effects';
     AvatarModule,
     RouterModule,
     ButtonModule,
+    ToastModule,
     AutoCompleteModule,
     InputTextModule,
     InputTextareaModule,
     StoreModule.forRoot({ postsState : postsReducer, authState: authReducer, userState: userReducer}),
     EffectsModule.forRoot(PostsEffects, userEffects, AuthEffects),
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

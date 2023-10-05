@@ -31,8 +31,11 @@ export class AuthService {
         this.store.dispatch(authApiAction.token({ token }))
         localStorage.setItem('token', token);
         this.router.navigate(['/'])
+        return token;
+      } else {
+        this.store.dispatch(authApiAction.error({ error: 'Your username or password is not valid' }))
+        return null;
       }
-    return;
     })
   }
 

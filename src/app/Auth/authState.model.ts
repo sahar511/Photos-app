@@ -4,6 +4,6 @@ export interface AuthState {
     token: string | null,
     users: User[],
     user: User | null,
-    error: any | null,
+    error: string | null,
     loading: boolean,
     }

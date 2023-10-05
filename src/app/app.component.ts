@@ -22,6 +22,8 @@ export class AppComponent implements OnInit {
 
   constructor(private store: Store, private authService: AuthService) {}
 
+  title : string = 'Mini Instagram'
+
   ngOnInit() {
     this.user$.subscribe((user)=> console.log('user', user))
     this.token$.subscribe((token) => {

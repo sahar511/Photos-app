@@ -11,14 +11,6 @@ import { EMPTY } from 'rxjs';
 
 @Injectable()
 export class AuthEffects {
-
-  // logIn$ = createEffect(() =>
-  //   this.actions$.pipe(
-  //     ofType(authApiAction.loginStart),
-  //     tap(({ username, password}) => this.authService.login({ username, password }))
-  //     )
-  //   )
-
   loadUsers$ = createEffect(() => this.actions$.pipe(
     ofType(authApiAction.usersLoadStart),
     exhaustMap(() => this.authService.getUsers()
