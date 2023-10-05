@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="header">
+        <div>
+            <p-avatar icon="pi pi-user" styleClass="mr-2" size="xlarge"></p-avatar>
+            {{ (selectedUser$ | async)?.name}}
+        </div>
+        <span>Followers</span>
+        <span>Following</span>
+    </div>
+    <hr>
+    <div>phone: {{(selectedUser$ | async)?.phone }} </div>
+</div>

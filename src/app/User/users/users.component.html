@@ -1,0 +1,17 @@
+<div class="container">
+  <span class="p-input-icon-left">
+    <i class="pi pi-search"></i>
+    <input
+      type="text"
+      pInputText
+      [(ngModel)]="value"
+      (input)="handleChange()"
+      placeholder="Search for users"
+    />
+  </span>
+  <div *ngFor="let user of suggestions">
+    <a [routerLink]="['/users', user.id]">
+      <p>{{ user.name }}</p>
+    </a>
+  </div>
+</div>
