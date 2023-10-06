@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { Store } from '@ngrx/store';
 
-import { PostsApiAction } from '../store/posts.actions';
-import { selectPostLoading, selectPostsData } from '../store/posts.selectors';
+import { PostsApiAction } from '../app/Posts/store/posts.actions';
+import { selectPostLoading, selectPostsData } from '../app/Posts/store/posts.selectors';
 
 @Component({
   selector: 'app-home',

@@ -20,7 +20,7 @@ import { postsReducer } from './Posts/store/posts.reducer';
 import { PostsListComponent } from './Posts/posts-list/posts-list.component';
 import { PostComponent } from './Posts/post/post.component';
 import { PostDetailsComponent } from './Posts/post-details/post-details.component';
-import { HomeComponent } from './Posts/home/home.component';
+import { HomeComponent } from '../home/home.component';
 import { CommentComponent } from './Posts/comment/comment.component';
 import { CommentFormComponent } from './Posts/comment-form/comment-form.component';
 import { LoadingComponent } from './Shared/loading/loading.component';
@@ -35,6 +35,7 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { AuthEffects } from './Auth/store/auth.effects';
 import { MessageService } from 'primeng/api';
 import { FilterUsersPipe } from './User/filter-users.pipe';
+import { MenuBarComponent } from './menu-bar/menu-bar.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { FilterUsersPipe } from './User/filter-users.pipe';
     UserDetailsComponent,
     UsersComponent,
     FilterUsersPipe,
+    MenuBarComponent,
   ],
   imports: [
     BrowserModule,

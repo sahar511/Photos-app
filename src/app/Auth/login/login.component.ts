@@ -5,6 +5,7 @@ import { MessageService } from 'primeng/api';
 
 import { authApiAction } from '../store/auth.actions';
 import { selectError } from '../store/auth.selectors';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -14,6 +15,7 @@ import { selectError } from '../store/auth.selectors';
 })
 export class LoginComponent {
   error$ = this.store.select(selectError)
+  errorSubscription : Subscription | null = null
   constructor(private store: Store, private messageService: MessageService){}
   
   onSubmit(authForm: NgForm){
@@ -21,7 +23,7 @@ export class LoginComponent {
       username: authForm.value.username,
       password: authForm.value.password,
      }))
-    this.error$.subscribe((error) => {
+    this.errorSubscription = this.error$.subscribe((error) => {
       if(!error) {
         return
       }
