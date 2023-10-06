@@ -36,6 +36,7 @@ import { AuthEffects } from './Auth/store/auth.effects';
 import { MessageService } from 'primeng/api';
 import { FilterUsersPipe } from './User/filter-users.pipe';
 import { MenuBarComponent } from './menu-bar/menu-bar.component';
+import { FilterMenuItemsPipe } from './menu-bar/filter-menu-items.pipe';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { MenuBarComponent } from './menu-bar/menu-bar.component';
     UsersComponent,
     FilterUsersPipe,
     MenuBarComponent,
+    FilterMenuItemsPipe,
   ],
   imports: [
     BrowserModule,
