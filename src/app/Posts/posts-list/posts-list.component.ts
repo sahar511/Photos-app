@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Post } from '../posts.model';
 
 @Component({
   selector: 'app-posts-list',
@@ -6,5 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./posts-list.component.css']
 })
 export class PostsListComponent {
-  @Input() items: any[] | null = []
+  @Input() items: Post[] | null = []
 }

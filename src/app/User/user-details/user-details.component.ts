@@ -11,15 +11,14 @@ import { selectSelectedUser } from '../store/user.selector';
   styleUrls: ['./user-details.component.css']
 })
 export class UserDetailsComponent implements OnInit, OnDestroy{
-  value?: string
-  private sub!: Subscription;
+  private idSubscription!: Subscription;
   @Input() id: number = 0;
   selectedUser$ = this.store.select(selectSelectedUser)
 
   constructor(private store: Store, private route: ActivatedRoute, ){}
 
   ngOnInit(): void {
-    this.sub = this.route.params.subscribe(({ id }) => {
+    this.idSubscription = this.route.params.subscribe(({ id }) => {
       this.id = id
     })
 
@@ -27,6 +26,6 @@ export class UserDetailsComponent implements OnInit, OnDestroy{
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe()
+    this.idSubscription.unsubscribe()
 }
 }

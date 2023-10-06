@@ -5,11 +5,10 @@
       type="text"
       pInputText
       [(ngModel)]="value"
-      (input)="handleChange()"
       placeholder="Search for users"
     />
   </span>
-  <div *ngFor="let user of suggestions">
+  <div *ngFor="let user of (users$ | async) | filterUsers: value">
     <a [routerLink]="['/users', user.id]">
       <p>{{ user.name }}</p>
     </a>

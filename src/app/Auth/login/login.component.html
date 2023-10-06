@@ -2,8 +2,8 @@
     <p-toast></p-toast>
     <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" class="container">
         <h1>Sign In</h1>
-        <input pInputText ngModel required pKeyFilter="int" placeholder="Username" name="username" type="email" />
-        <input pInputText ngModel required pKeyFilter="int" placeholder="password"  name="password" type="password"/>
+        <input pInputText ngModel required placeholder="Username" name="username" type="email" />
+        <input pInputText ngModel required placeholder="password"  name="password" type="password"/>
         <p-button [disabled]="!authForm.valid" label="Submit" type="Submit"></p-button>
     </form>
 </section>

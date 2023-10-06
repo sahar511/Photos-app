@@ -25,7 +25,6 @@ export class AppComponent implements OnInit {
   title : string = 'Mini Instagram'
 
   ngOnInit() {
-    this.user$.subscribe((user)=> console.log('user', user))
     this.token$.subscribe((token) => {
       if (token) {
 

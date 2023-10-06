@@ -8,7 +8,7 @@ export const authApiAction = createActionGroup({
         'Token':  props<{ token: string | null }>(),
         'Users Load Start': emptyProps(),
         'Login Start': props<{ username: string, password: string }>(),
-        'Login Success': props<{ user: User }>(),
+        'Login Success': props<{ username: string, password: string }>(),
         'error': props<{ error: string }>(),
     }
 })

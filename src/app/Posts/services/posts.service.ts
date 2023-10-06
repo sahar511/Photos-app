@@ -26,12 +26,7 @@ export class PostsService {
     return this.http
       .get<Post>(
         `https://jsonplaceholder.typicode.com/photos/${id}`
-      ).pipe(
-        catchError(error => {
-          console.error('Error:', error);
-          throw error;
-        })
-      );
+      )
   }
 
   getPostComments(): Observable<Array<Comment>> {

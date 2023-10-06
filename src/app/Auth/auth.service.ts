@@ -21,23 +21,7 @@ export class AuthService {
         `https://jsonplaceholder.typicode.com/users`
       )
   }
-  
 
-  login({ username , password }: { username: string, password: string}) {
-    this.users$.subscribe((users) => {
-      const user = users.find(item => item.username === username && item.email === password);
-      if(user) {
-        const token = 'vmdbzacvbjhsdKgbjhsdefabgsdhjfbafdjh'
-        this.store.dispatch(authApiAction.token({ token }))
-        localStorage.setItem('token', token);
-        this.router.navigate(['/'])
-        return token;
-      } else {
-        this.store.dispatch(authApiAction.error({ error: 'Your username or password is not valid' }))
-        return null;
-      }
-    })
-  }
 
   logout(): void {
     localStorage.removeItem('token');

@@ -36,6 +36,7 @@ import { userEffects } from './User/store/user.effects';
 import { userReducer } from './User/store/user.reducer';
 import { AuthEffects } from './Auth/store/auth.effects';
 import { MessageService } from 'primeng/api';
+import { FilterUsersPipe } from './User/filter-users.pipe';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { MessageService } from 'primeng/api';
     LoginComponent,
     UserDetailsComponent,
     UsersComponent,
+    FilterUsersPipe,
   ],
   imports: [
     BrowserModule,

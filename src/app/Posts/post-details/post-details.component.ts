@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 
@@ -12,8 +12,8 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./post-details.component.css']
 })
 export class PostDetailsComponent implements OnInit, OnDestroy {
-  @Input() id: number = 0;
-  private sub!: Subscription;
+  id: number = 0;
+  private idSubscription!: Subscription;
 
   post$ = this.store.select(selectSelectedPost);
   comments$ = this.store.select(selectPostComments);
@@ -22,7 +22,7 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute, private store: Store) {}
   ngOnInit(): void {
-    this.sub = this.route.params.subscribe(({ id }) => {
+    this.idSubscription = this.route.params.subscribe(({ id }) => {
       this.id = id
       this.store.dispatch(PostsApiAction.selectedPostId({ id }))
     })
@@ -33,7 +33,7 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
   
 
   ngOnDestroy(): void {
-      this.sub.unsubscribe()
+      this.idSubscription.unsubscribe()
   }
 
 }

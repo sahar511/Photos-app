@@ -17,7 +17,7 @@ export const authReducer = createReducer(
     on(authApiAction.users, (state, { users })=> ({...state, users})),
     on(authApiAction.usersLoadStart, (state)=> ({...state, loading: true})),
     on(authApiAction.loginStart, (state) => ({...state, loading: true })),
-    on(authApiAction.loginSuccess, (state, { user }) => ({...state, user, error: null, loading: false })),
+    on(authApiAction.loginSuccess, (state) => ({...state, error: null, loading: false })),
     on(authApiAction.token, (state, { token }) => ({...state, token})),
     on(authApiAction.error, (state, { error }) => ({...state, error}))
 )

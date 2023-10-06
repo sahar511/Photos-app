@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { NgForm } from '@angular/forms';
 import { MessageService } from 'primeng/api';
@@ -13,16 +12,15 @@ import { selectError } from '../store/auth.selectors';
   templateUrl: './login.component.html',  
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   error$ = this.store.select(selectError)
-  constructor(private authService: AuthService, private store: Store, private messageService: MessageService){}
-  ngOnInit(): void {
-    this.store.dispatch(authApiAction.usersLoadStart())
-  }
-
+  constructor(private store: Store, private messageService: MessageService){}
+  
   onSubmit(authForm: NgForm){
-    this.authService.login(authForm.value)
-    
+    this.store.dispatch(authApiAction.loginStart({ 
+      username: authForm.value.username,
+      password: authForm.value.password,
+     }))
     this.error$.subscribe((error) => {
       if(!error) {
         return
@@ -35,6 +33,5 @@ export class LoginComponent implements OnInit {
     })
     authForm.reset()
   }
-
 }
  
