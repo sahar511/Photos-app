@@ -6,7 +6,6 @@ import { AuthState } from "src/app/Auth/authState.model";
 export const initialState: AuthState = {
     token: localStorage.getItem('token'), 
     users: [],
-    user: null,
     error: null,
     loading: false,
     selectedUser: null,
@@ -20,7 +19,7 @@ export const authReducer = createReducer(
     on(authApiAction.users, (state, { users })=> ({...state, users})),
     on(authApiAction.usersLoadStart, (state)=> ({...state, loading: true})),
     on(authApiAction.loginStart, (state) => ({...state, loading: true })),
-    on(authApiAction.loginSuccess, (state) => ({...state, error: null, loading: false })),
+    on(authApiAction.loginSuccess, (state, { token }) => ({...state, token, error: null, loading: false })),
     on(authApiAction.token, (state, { token }) => ({...state, token})),
     on(authApiAction.error, (state, { error }) => ({...state, error}))
 )
