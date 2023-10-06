@@ -40,12 +40,8 @@ export class AuthEffects{
     ofType(authApiAction.loginStart),
     switchMap(({ username, password}) => {
      this.store.dispatch(authApiAction.usersLoadStart())
-     console.log('ooooo', username, password)
-     this.users$.pipe(  tap((value) => console.log('9-----9', value)   ))
      this.users$.subscribe(users => {
       const user = users.find(item => (item.username === username));
-      console.log('user', user, username, password)
-      console.log('users---', users)
       if(user) {
         const token = 'vmdbzacvbjhsdKgbjhsdefabgsdhjfbafdjh'
         this.store.dispatch(authApiAction.token({ token }))
@@ -55,7 +51,7 @@ export class AuthEffects{
         this.store.dispatch(authApiAction.error({ error: 'Your username or password is not valid' }))
       }
      })
-     return of({ type: 'NO_OP' });
+     return of({ type: 'Login Success' });
     })
   )
   );
