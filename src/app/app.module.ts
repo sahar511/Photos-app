@@ -32,8 +32,6 @@ import { UserDetailsComponent } from './User/user-details/user-details.component
 import { UsersComponent } from './User/users/users.component';
 import { PostsEffects } from './Posts/store/posts.effects';
 import { AutoCompleteModule } from 'primeng/autocomplete';
-import { userEffects } from './User/store/user.effects';
-import { userReducer } from './User/store/user.reducer';
 import { AuthEffects } from './Auth/store/auth.effects';
 import { MessageService } from 'primeng/api';
 import { FilterUsersPipe } from './User/filter-users.pipe';
@@ -70,8 +68,8 @@ import { FilterUsersPipe } from './User/filter-users.pipe';
     AutoCompleteModule,
     InputTextModule,
     InputTextareaModule,
-    StoreModule.forRoot({ postsState : postsReducer, authState: authReducer, userState: userReducer}),
-    EffectsModule.forRoot(PostsEffects, userEffects, AuthEffects),
+    StoreModule.forRoot({ postsState : postsReducer, authState: authReducer }),
+    EffectsModule.forRoot(PostsEffects, AuthEffects ),
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

@@ -9,11 +9,14 @@ export const initialState: AuthState = {
     user: null,
     error: null,
     loading: false,
+    selectedUser: null,
 }
 
 
 export const authReducer = createReducer(
     initialState,
+    on(authApiAction.selectedUser, (state, { user }) => ({...state, selectedUser: user, loading: false})),
+    on(authApiAction.userLoadStart, (state) => ({...state, loading: true})),
     on(authApiAction.users, (state, { users })=> ({...state, users})),
     on(authApiAction.usersLoadStart, (state)=> ({...state, loading: true})),
     on(authApiAction.loginStart, (state) => ({...state, loading: true })),

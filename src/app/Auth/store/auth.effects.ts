@@ -4,16 +4,27 @@ import {  catchError, exhaustMap, map, switchMap, tap, withLatestFrom } from 'rx
 
 import { AuthService } from '../auth.service';
 import { authApiAction } from './auth.actions';
-import { EMPTY, Subscription, of } from 'rxjs';
+import { EMPTY, of } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { selectUsersData } from './auth.selectors';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/User/user.service';
 
 
 
 
 @Injectable()
 export class AuthEffects{
+  loadUser$ = createEffect(() => this.actions$.pipe(
+    ofType(authApiAction.userLoadStart),
+    exhaustMap(({ id }) => this.userService.getUser(id)
+      .pipe(
+        map(user => authApiAction.selectedUser({ user })),
+        catchError(() => EMPTY)
+      ))
+    )
+  );
+
   users$ = this.store.select(selectUsersData)
   loadUsers$ = createEffect(() => this.actions$.pipe(
     ofType(authApiAction.usersLoadStart),
@@ -54,5 +65,6 @@ export class AuthEffects{
     private authService: AuthService,
     private store: Store,
     private router: Router, 
+    private userService: UserService,
   ) {}
 }

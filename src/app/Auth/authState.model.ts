@@ -6,4 +6,5 @@ export interface AuthState {
     user: User | null,
     error: string | null,
     loading: boolean,
+    selectedUser: User | null,
     }

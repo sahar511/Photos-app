@@ -1,10 +1,9 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { UserApiAction } from '../store/user.actions';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { selectSelectedUser } from '../store/user.selector';
-
+import { selectSelectedUser } from 'src/app/Auth/store/auth.selectors';
+import { authApiAction } from 'src/app/Auth/store/auth.actions';
 @Component({
   selector: 'app-user-details',
   templateUrl: './user-details.component.html',
@@ -22,7 +21,7 @@ export class UserDetailsComponent implements OnInit, OnDestroy{
       this.id = id
     })
 
-    this.store.dispatch(UserApiAction.userLoadStart({ id: this.id }))
+    this.store.dispatch(authApiAction.userLoadStart({ id: this.id }))
   }
 
   ngOnDestroy(): void {

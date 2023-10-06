@@ -4,7 +4,7 @@ import { MenuItem } from 'primeng/api';
 
 import { selectToken } from './Auth/store/auth.selectors';
 import { AuthService } from './Auth/auth.service';
-import { selectSelectedUser } from './User/store/user.selector';
+import { selectSelectedUser } from './Auth/store/auth.selectors';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
