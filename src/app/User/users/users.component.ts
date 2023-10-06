@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit, OnDestroy {
-  value: string = '';
+  searchValue: string = '';
   users$ = this.store.select(selectUsersData);
   loadingUsersSubscription?: Subscription
   constructor(private store: Store, private authService: AuthService) {}

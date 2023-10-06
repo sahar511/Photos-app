@@ -4,11 +4,11 @@
     <input
       type="text"
       pInputText
-      [(ngModel)]="value"
+      [(ngModel)]="searchValue"
       placeholder="Search for users"
     />
   </span>
-  <div *ngFor="let user of (users$ | async) | filterUsers: value">
+  <div *ngFor="let user of (users$ | async) | filterUsers: searchValue">
     <a [routerLink]="['/users', user.id]">
       <p>{{ user.name }}</p>
     </a>

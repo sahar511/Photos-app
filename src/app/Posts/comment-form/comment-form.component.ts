@@ -9,7 +9,7 @@ import { Comment } from '../comment.model';
   styleUrls: ['./comment-form.component.css']
 })
 export class CommentFormComponent {
-  value: string =''
+  comment: string =''
   @Input() postId: number = 0
   constructor(private store: Store) {}
   onSubmit(){
@@ -17,7 +17,7 @@ export class CommentFormComponent {
       postId: this.postId,
        name: 'user',
        email: 'user',
-       body: this.value
+       body: this.comment
    }
     this.store.dispatch(PostsApiAction.postNewComment({ comment })) 
   }
